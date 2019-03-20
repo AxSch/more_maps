@@ -10,12 +10,6 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: accessToken
 }).addTo(map);
 
-// By Daniel Case - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=41065588 kew
-// By Emőke Dénes - kindly granted by the author, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=60801410 Hunterian
-// By Diliff - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=22422678 V&A
-// By w:User:DisillusionedBitterAndKnackered - from english WP, original photo by User:Nevilley replaced by new version from DBaK, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=1657384 Bart
-// By Emőke Dénes - kindly granted by the author, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=17592420 - Grant Museum
-// By Anthony O'Neil, CC BY-SA 2.0, https://commons.wikimedia.org/w/index.php?curid=70643710 - DES
 var POI = [
   [51.496389, -0.171944, "V&A"],
   [51.499897, -0.200244, "DES"],
@@ -24,6 +18,13 @@ var POI = [
   [51.5238, -0.1343, "GRN"],
   [51.515278, -0.115833, "HUN"]
 ]
+
+var museumIcon = L.icon({
+  iconUrl: 'img/museum-15.svg',
+  iconSize: [24, 24],
+  iconAnchor: [12, 22],
+  popupAnchor: [0, -24], // point from which the popup should open relative to the iconAnchor - should be negative
+})
 
 var vaPopup = L.popup({
   minWidth: 250
@@ -51,7 +52,7 @@ var desPopup = L.popup({
 
 var markersArr = []
 for (let index = 0; index < POI.length; index++) {
-  markersArr[index] = new L.marker(POI[index]).addTo(map);
+  markersArr[index] = new L.marker(POI[index], {icon: museumIcon}).addTo(map);
   switch (POI[index][2]) {
     case "V&A":
       markersArr[index].bindPopup(vaPopup)
