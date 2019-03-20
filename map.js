@@ -53,31 +53,44 @@ var desPopup = L.popup({
 var markersArr = []
 for (let index = 0; index < POI.length; index++) {
   markersArr[index] = new L.marker(POI[index], {icon: museumIcon}).addTo(map);
-  switch (POI[index][2]) {
-    case "V&A":
-      markersArr[index].bindPopup(vaPopup);
-      break;
-    case "DES":
-      markersArr[index].bindPopup(desPopup);
-      break;
-    case "KEW":
-      markersArr[index].bindPopup(kewPopup);
-      break;
-    case "HUN":
-      markersArr[index].bindPopup(hunPopup);
-      break;
-    case "BAR":
-      markersArr[index].bindPopup(barPopup);
-      break;
-    case "GRN":
-      markersArr[index].bindPopup(grnPopup);
-      break;
+  // switch (POI[index][2]) {
+  //   case "V&A":
+  //     markersArr[index].bindPopup(vaPopup);
+  //     break;
+  //   case "DES":
+  //     markersArr[index].bindPopup(desPopup);
+  //     break;
+  //   case "KEW":
+  //     markersArr[index].bindPopup(kewPopup);
+  //     break;
+  //   case "HUN":
+  //     markersArr[index].bindPopup(hunPopup);
+  //     break;
+  //   case "BAR":
+  //     markersArr[index].bindPopup(barPopup);
+  //     break;
+  //   case "GRN":
+  //     markersArr[index].bindPopup(grnPopup);
+  //     break;
   
-    default:
-      break;
-  }
+  //   default:
+  //     break;
+  // }
 }
 
+var latlng;
+
+markersArr[0].on('click', e => {
+  document.getElementById('name').innerHTML = 'V&A'
+  document.getElementById('coordinates').innerHTML = 'Lat: ' + e.latlng['lat'] + ', Lng: ' + e.latlng['lng'];
+  document.getElementById('link_anchor').innerHTML = 'Wiki Page';
+  document.getElementById('link_anchor').setAttribute('href', 'https://en.wikipedia.org/wiki/Victoria_and_Albert_Museum')
+  latlng = e.latlng;
+});
+
+document.getElementById('center').addEventListener('click', () => {
+  map.panTo(latlng)
+})
 
 // var polyLine = new L.polyline(POI, {color: "#FF69B4", weight: 2}).addTo(map);
 
@@ -88,20 +101,20 @@ for (let index = 0; index < POI.length; index++) {
 // 51.5163, -0.08145 - bishopsgate
 // 51.5132, -0.0777 - aldgate
 
-var locations = [
-  [51.512778, -0.131111, "SOHO"],
-  [51.526, -0.078, "SHRE"],
-  [51.5166, -0.075, "SPTF"],
-  [51.52653, -0.08246, "OLDS"],
-  [51.5163, -0.08145, "BSHP"],
-  [51.5132, -0.0777, "ALD"]
-];
+// var locations = [
+//   [51.512778, -0.131111, "SOHO"],
+//   [51.526, -0.078, "SHRE"],
+//   [51.5166, -0.075, "SPTF"],
+//   [51.52653, -0.08246, "OLDS"],
+//   [51.5163, -0.08145, "BSHP"],
+//   [51.5132, -0.0777, "ALD"]
+// ];
 
-var polygon = L.polygon(locations, {color: "#FF69B4", weight: 2}).addTo(map);
-var pointArr = []
-for (let index = 0; index < locations.length; index++) {
-  locations[index] = L.circle(locations[index], {radius: 100}).addTo(map);
-}
+// var polygon = L.polygon(locations, {color: "#FF69B4", weight: 2}).addTo(map);
+// var pointArr = []
+// for (let index = 0; index < locations.length; index++) {
+//   locations[index] = L.circle(locations[index], {radius: 100}).addTo(map);
+// }
 
 
 
