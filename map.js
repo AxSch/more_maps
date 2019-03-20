@@ -80,12 +80,28 @@ for (let index = 0; index < POI.length; index++) {
 
 
 // var polyLine = new L.polyline(POI, {color: "#FF69B4", weight: 2}).addTo(map);
-// var polygon = new L.polygon(POI, {color: "#FF69B4", weight: 2}).addTo(map);
 
+// 51.512778, -0.131111 - SOhO
+// 51.526, -0.078 - shore
+// 51.5166, -0.075 - spital
+// 51.52653, -0.08246 - old street
+// 51.5163, -0.08145 - bishopsgate
+// 51.5132, -0.0777 - aldgate
 
+var locations = [
+  [51.512778, -0.131111, "SOHO"],
+  [51.526, -0.078, "SHRE"],
+  [51.5166, -0.075, "SPTF"],
+  [51.52653, -0.08246, "OLDS"],
+  [51.5163, -0.08145, "BSHP"],
+  [51.5132, -0.0777, "ALD"]
+];
 
-
-
+var polygon = L.polygon(locations, {color: "#FF69B4", weight: 2}).addTo(map);
+var pointArr = []
+for (let index = 0; index < locations.length; index++) {
+  locations[index] = L.circle(locations[index], {radius: 100}).addTo(map);
+}
 
 
 
