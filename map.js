@@ -79,7 +79,8 @@ for (let index = 0; index < POI.length; index++) {
 }
 
 
-var polyLine = new L.polyline(POI, {color: "#FF69B4", weight: 2}).addTo(map);
+// var polyLine = new L.polyline(POI, {color: "#FF69B4", weight: 2}).addTo(map);
+// var polygon = new L.polygon(POI, {color: "#FF69B4", weight: 2}).addTo(map);
 
 
 
