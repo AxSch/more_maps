@@ -10,4 +10,13 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     accessToken: accessToken
 }).addTo(map);
 
-var kewGardenMarker = L.marker([51.474667, -0.295467]).addTo(map)
+var POI = [
+  [51.496389, -0.171944],
+  [51.499897, -0.200244],
+  [51.474667, -0.295467],
+  [51.51746, -0.10009],
+  [51.5238, -0.1343],
+]
+for (let index = 0; index < POI.length; index++) {
+  const marker = new L.marker(POI[index]).addTo(map);
+}
